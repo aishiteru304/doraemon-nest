@@ -28,6 +28,8 @@ export class UsersModule {
       .apply(JwtAuthMiddleware)
       .forRoutes(
         { path: 'users/logout', method: RequestMethod.GET },
+        { path: 'users', method: RequestMethod.GET },
+        { path: 'users/:id', method: RequestMethod.DELETE },
       );
   }
 }

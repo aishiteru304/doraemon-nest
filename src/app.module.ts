@@ -4,9 +4,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
-import { UserSessionsModule } from './user-sessions/user-sessions.module';
 import { UserSession } from './user-sessions/user-session.entity';
 import { ConfigModule } from '@nestjs/config';
+import { AuthorsModule } from './authors/authors.module';
+import { PublishersModule } from './publishers/publishers.module';
+import { CategoriesModule } from './categories/categories.module';
+import { Author } from './authors/author.entity';
+import { Category } from './categories/category.entity';
+import { Publisher } from './publishers/publisher.entity';
 
 @Module({
   imports: [
@@ -22,12 +27,14 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User, UserSession],
+      entities: [User, UserSession, Author, Category, Publisher],
       synchronize: true,
     }),
 
     UsersModule,
-    UserSessionsModule
+    AuthorsModule,
+    PublishersModule,
+    CategoriesModule
   ],
   controllers: [AppController],
   providers: [AppService],
