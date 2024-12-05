@@ -5,6 +5,10 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors();
+
+
+
   // Sử dụng ValidationPipe
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true, // Loại bỏ các trường không có trong DTO
