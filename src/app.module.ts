@@ -15,6 +15,10 @@ import { Publisher } from './publishers/publisher.entity';
 import { BooksModule } from './books/books.module';
 import { Book } from './books/book.entity';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { OrderDetailModule } from './order-detail/order-detail.module';
+import { OrderModule } from './order/order.module';
+import { Order } from './order/order.entity';
+import { OrderDetail } from './order-detail/order-detail.entity';
 
 @Module({
   imports: [
@@ -30,7 +34,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User, UserSession, Author, Category, Publisher, Book],
+      entities: [User, UserSession, Author, Category, Publisher, Book, Order, OrderDetail],
       synchronize: true,
     }),
 
@@ -39,7 +43,9 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
     PublishersModule,
     CategoriesModule,
     BooksModule,
-    CloudinaryModule
+    CloudinaryModule,
+    OrderDetailModule,
+    OrderModule
   ],
   controllers: [AppController],
   providers: [AppService],

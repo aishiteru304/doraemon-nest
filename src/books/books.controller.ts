@@ -16,6 +16,11 @@ export class BooksController {
         return this.booksService.getAllBooks();
     }
 
+    @Get("bestSale")
+    async getBestSale(): Promise<Book[]> {
+        return this.booksService.getBestSale();
+    }
+
     @Post()
     // @UseInterceptors(FileInterceptor('file'))
     @FormDataRequest()

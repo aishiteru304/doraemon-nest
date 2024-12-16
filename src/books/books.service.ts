@@ -35,6 +35,19 @@ export class BooksService {
 
     }
 
+    getBestSale(): Promise<Book[]> {
+        try {
+            return this.bookRepository.find({
+                take: 10, // Giới hạn 10 quyển sách
+                relations: ['author', 'category'], // Eager load các quan hệ liên quan
+            });
+        }
+        catch (error) {
+            throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
     async createBook(
         req: Request,
         // file: Express.Multer.File,
